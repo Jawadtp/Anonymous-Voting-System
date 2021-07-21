@@ -7,8 +7,9 @@ import {
   Switch,
   useHistory
 } from 'react-router-dom'
-import Home from './components/Home';
 
+import Home from './views/Home';
+import Poll from './views/Poll';
 function App() 
 {
   let history = useHistory();
@@ -16,8 +17,13 @@ function App()
   return (
     <Router>
       <Switch>
-            <Route path="/" render={(props)=> <Home {...props}/>}>
+            <Route exact path="/" render={(props)=> <Home {...props}/>}>
             </Route>
+
+            <Route path="/poll/:id" render={(props)=> <Poll {...props}/>}>
+            </Route>
+            
+            
       </Switch>
     </Router>)
 
