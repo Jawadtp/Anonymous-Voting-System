@@ -50,6 +50,7 @@ body
 
 .unselected
 {
+  cursor: pointer;
   color:white ;
   background-color: #14c3d1;
 }

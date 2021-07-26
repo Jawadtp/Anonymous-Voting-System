@@ -14,26 +14,31 @@ const Login = () =>
         setMode(mode=="register"?"login":"register")
     }
 
-    function onSubmitClick(email, password)
+    function onSubmitClick(email, password, username)
     {
-        console.log("Email: "+email+" Password: "+password)
+       // console.log("Email: "+email+" Password: "+password)
 
-        var details = {email:email, password:password}
-        var x = {
+        var details = {email:email, password:password, username: username}
+
+        axios.post('http://localhost:5000/register', details).then(
+            (response) => {
+                var result = response.data;
+                console.log(result);
+            },
+            (error) => {
+                console.log(error);
+            }
+        );
+       /* var x = {
             method: 'POST',
             headers: {
               'Content-type': 'application/json',
             },
             body: JSON.stringify(details),
-          }
+          }*/
 
 
-          fetch('http://127.0.0.1:5000/api/', x)
-            .then(res => 
-                {
-                    console.log(res.json)
-                })
-        
+         
       /*  axios.post('http://localhost:5000/login', x)
         .then((response) => 
         {
