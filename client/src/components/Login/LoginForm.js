@@ -4,9 +4,11 @@ const LoginForm = (props) => {
 
     function onSubmitClick()
     {
-        var username = document.getElementById("username").value;
-        var email = document.getElementById("emailid").value;
-        var password = document.getElementById("password").value;
+        var email = document.getElementById("emailid").value
+        var username = 'login'
+        if(props.mode==='register')
+            username=document.getElementById("username").value
+        var password = document.getElementById("password").value
         props.onSubmitClick(email, password, username)
     }
     return (

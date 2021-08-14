@@ -1,9 +1,9 @@
 import React from 'react'
 import LoginForm from './LoginForm'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-const Login = () => 
+const Login = (props) => 
 {
     const [mode, setMode]=useState("login")
     
@@ -19,11 +19,15 @@ const Login = () =>
        // console.log("Email: "+email+" Password: "+password)
 
         var details = {email:email, password:password, username: username}
+        
+        console.log('Current mode: '+mode)
 
-        axios.post('http://localhost:5000/register', details).then(
+        axios.post('http://localhost:5000/'+mode, details).then(
             (response) => {
-                var result = response.data;
-                console.log(result);
+                const token = response.data.access_token
+                localStorage.setItem('token', response.data.access_token)
+                console.log('Login successful, token received: '+token);
+                props.initUser(token)
             },
             (error) => {
                 console.log(error);
@@ -50,6 +54,11 @@ const Login = () =>
            console.log('argh')
         }) */
     }
+    useEffect(() => 
+    {
+        console.log('Login component loaded.')
+      //  console.log('Page loaded, token: '+localStorage.getItem('token'))
+    },[]);
 
     return (
     <div className="loginWrapper container">

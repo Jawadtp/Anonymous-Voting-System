@@ -10,6 +10,7 @@ import {
 
 import Home from './views/Home';
 import Poll from './views/Poll';
+
 function App() 
 {
   let history = useHistory();
