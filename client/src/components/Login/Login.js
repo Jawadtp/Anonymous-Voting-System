@@ -16,7 +16,6 @@ const Login = (props) =>
 
     function onSubmitClick(email, password, username)
     {
-       // console.log("Email: "+email+" Password: "+password)
 
         var details = {email:email, password:password, username: username}
         
@@ -24,6 +23,8 @@ const Login = (props) =>
 
         axios.post('http://localhost:5000/'+mode, details).then(
             (response) => {
+                console.log(response.data)
+                if('error' in response.data) return alert(response.data.error);
                 const token = response.data.access_token
                 localStorage.setItem('token', response.data.access_token)
                 console.log('Login successful, token received: '+token);
@@ -33,35 +34,17 @@ const Login = (props) =>
                 console.log(error);
             }
         );
-       /* var x = {
-            method: 'POST',
-            headers: {
-              'Content-type': 'application/json',
-            },
-            body: JSON.stringify(details),
-          }*/
-
-
-         
-      /*  axios.post('http://localhost:5000/login', x)
-        .then((response) => 
-        {
-            console.log(response.data)
-        });
- */
-     /*   axios.get('http://localhost:5000/').then(res => 
-        {
-           console.log('argh')
-        }) */
+      
     }
     useEffect(() => 
     {
         console.log('Login component loaded.')
-      //  console.log('Page loaded, token: '+localStorage.getItem('token'))
     },[]);
 
     return (
+
     <div className="loginWrapper container">
+
         <div className="modeBtns">
             <span onClick={switchMode} className={`modeLoginBtn text-center ${mode==="register"?"unselected":""}`}><div className="text">LOGIN</div></span>
             <span onClick={switchMode} className={`modeRegBtn text-center ${mode==="login"?"unselected":""}`}><div className="text">REGISTER</div></span>
