@@ -10,6 +10,9 @@ from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 from flask_jwt_extended import JWTManager
 
+import pytz
+from dateutil import parser
+
 
 
 app = Flask(__name__)
@@ -87,7 +90,39 @@ def register():
         print(e)
         return jsonify({"error": str(e)})
     
-    
+
+
+def getISTDate(dateString):    #Time in Z string format is converted to IST
+    IST = pytz.timezone('Asia/Kolkata')
+    dateString = parser.parse(dateString)
+    return dateString.astimezone(IST).isoformat()
+
+
+@app.route('/create', methods = ['POST'])
+@jwt_required()
+@cross_origin()
+def createPoll():
+
+    name = request.json['name']
+    desc = request.json['desc']
+    startTime = getISTDate(request.json['starttime']) 
+    expiryTime = getISTDate(request.json['expirytime'])
+    email = get_jwt_identity()
+    questions = request.json['questions']
+
+    pollId = db.createPoll(name, desc, startTime, expiryTime, email)
+
+    print(questions)
+
+    if isinstance(pollId, int):
+        print('Poll added to polls table successfully..')
+        db.addPollQuestions(pollId, questions)
+        return jsonify({'sucesss':'poll added, poll ID: '+ str(pollId)})
+
+    else:
+        return jsonify({'error': pollId})
+
+
 
 if __name__ == "__main__":
   app.run(host="0.0.0.0", port=5000, debug=False)

@@ -1,18 +1,15 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
-import axios from 'axios';
-import Login
- from '../components/Login/Login';
-import Landing from '../components/Landing/Landing';
-import * as UtilFns from '../utilities/functions'
+import axios from 'axios'
+import CreateForm from './CreateForm'
+import Login from '../Login/Login'
 
-const Home = (props) => 
+const Create = (props) => 
 {
     const [user, setUser] = useState({}) 
 
     function initUser(token)
     {
-        console.log('Init user called........')
         const opts = 
         {
             headers: 
@@ -51,10 +48,10 @@ const Home = (props) =>
     return (
         <>
             
-            {!Object.keys(user).length?'Loading':user.username==='null'?<Login initUser={initUser}/>:<Landing user={user}/>}
+            {!Object.keys(user).length?'Loading':user.username==='null'?<Login initUser={initUser}/>:<CreateForm/>}
 
         </>
     )
 }
 
-export default Home
+export default Create

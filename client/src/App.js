@@ -10,6 +10,7 @@ import {
 
 import Home from './views/Home';
 import Poll from './views/Poll';
+import Create from './components/Create/Create';
 
 function App() 
 {
@@ -23,7 +24,9 @@ function App()
 
             <Route path="/poll/:id" render={(props)=> <Poll {...props}/>}>
             </Route>
-            
+
+            <Route path="/create" render={(props)=> <Create {...props}/>}>
+            </Route>
             
       </Switch>
     </Router>)

@@ -1,7 +1,7 @@
 body
 {
-  background-color: aliceblue;
-  padding: 10px;
+  background-color: #f5f5f5;
+  padding: 0px;
 }
 
 .loginWrapper
@@ -60,7 +60,256 @@ body
   margin-top: 5px;
   padding: 15px;
 }
+
+.bottomRight
+{
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+}
+
+.btnAddQuiz
+{
+  display:block;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: none;
+  font-size: 30px; 
+  background-color: #309fff; 
+ color: white;  
+ font-weight: 400;
+ padding-bottom: 10px;
+}
+
+.btnAddQuiz:hover
+{
+  transform: translate(-1.5px, -1.5px);
+}
+
+.createInput
+{
+  margin: 5px 0px;
+  width: 100%;
+  padding: 5px;
+  background-color: #e0fffc;
+}
+
+.createPollTitle
+{
+  font-weight: 350;
+  font-size: 25px;
+  margin-bottom: 8px;
+}
+
+.createPollWrapper
+{
+  background-color: white;
+  max-width: 800px;
+  border-radius: 10px;
+  padding: 10px 15px;
+}
+
+
+.expireTime
+{
+  float: right;
+}
+
+.timeInputWrapper
+{
+  margin: 10px 0px;
+}
+
+.timeInput
+{
+  border-radius: 2px;  
+  background-color: #e0fffc;
+  display: inline;
+
+}
+
+.timePicker
+{
+  margin-left: 15px;
+  background-color: #e0fffc;
+}
+
+.datePickerElementWrapper
+{
+  display: inline;
+}
+
+.addOptionBtn
+{
+  border-radius: 100%;
+  font-size: 18px;
+  font-weight: bolder;
+  color: white;
+  height: 30px;
+  width: 30px;
+  border: 2px solid white;
+  padding-bottom: 15px;
+  background-color: red;
+  margin-top: 8px;
+  margin-left: 8px;
+}
+
+.addOptionBtn:hover
+{
+  transform: translate(-1px, -1px);
+}
+
+.optionAdder
+{
+  display: flex;
+}
+
+.optionCard
+{
+  display: inline-block;
+  background-color: #cfcfcf;
+  margin: 5px 10px;
+  padding: 4px;
+  border-radius: 8px;
+  position: relative;
+}
+
+.optionRemoveBtn
+{
+  color: red;
+  font-size: 15px;
+  font-weight: bold;
+  background: none;
+  border: none;
+  position: absolute;
+  right: -8px;
+  top: -11px;
+}
+
+.optionsWrapper
+{
+  margin: 10px 0;
+  
+}
+
+.footerBtns
+{
+  margin: 40px 8px 10px;
+  
+}
+
+.submitPollBtn
+{
+  float: right;
+}
+
+.questionCard
+{
+  background-color: #e0fffc;
+  border: 2px solid black;
+  border-radius: 10px;
+  margin: 16px 0;
+  padding: 8px;
+  position: relative;
+}
+
+.questionRemoveBtn
+{
+  color: red;
+  font-size: 25px;
+  font-weight: bold;
+  background: none;
+  border: none;
+  position: absolute;
+  right: -5px;
+  top: -16px;
+}
+
+.questionRemoveBtn:hover
+{
+  transform: translate(1px, -1px);
+}
+
+.addedQuestions
+{
+  margin-top: 20px;
+}
+
+.questionAddWrapper
+{
+  margin-top: 20px;
+}
+
+.questionWrapper
+{
+  margin-left: 5px;
+}
+
+.landingHeader
+{
+  background-color: white;
+  padding: 12px;
+}
+
+.anonPollsLogo
+{
+  font-size: 22px;
+  font-weight: 2000;
+}
+
+.pollsPart
+{
+  color: #82f571;
+}
+
+.pollsView
+{
+  background-color: ;
+  width: 600px;
+  margin: 40px auto;
+  
+}
+
+.pollsViewTitle
+{
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.pollsViewDesc
+{
+  font-size: 16px;
+  color: #878787;
+}
+
 @media only screen and (max-width: 600px) 
 {
- 
+  .expireTime
+  {
+    float: none;
+  }
+  
+  .timeInput
+  {
+    border-radius: 0px;  
+    background-color: white;
+    display: block;
+    margin-top: 5px;
+  }
+
+  .timePicker
+  {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .addOptionBtn
+  {
+    display: inline;
+  }
+  .datePickerElementWrapper
+  {
+    display: block;  
+  }
 }
